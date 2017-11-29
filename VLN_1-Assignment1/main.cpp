@@ -7,38 +7,24 @@ int main()
 {
     string str;
     ifstream fin;
-    int counter = 10;
     char input;
 
+    fin.open("textFile.txt");
 
     do {
-        fin.open("textFile.txt");
         if (fin.is_open()) {
-            while (counter > 0) {
-                    counter--;
+            for(int i = 0; i < 10; i++){
                 getline(fin, str);
                 cout << str << endl;
             }
-            fin.close();
         }
+        do {
         cout << "Do you wish to continue (y/n)?" << endl;
         cin >> input;
+        }while (input != 'n' && input != 'y');
     }
     while (input != 'n');
-
-
+    fin.close();
 
     return 0;
 }
-
-//cout << "Do you wish to continue (y/n)?" << endl;
-/*if (fin.is_open()) {
-        while (!fin.eof()) {
-            getline(fin, str);
-            cout << str << endl;
-        }
-        fin.close();
-    }
-    else {
-        cout << "Unable to read file" << endl;
-    }*/
